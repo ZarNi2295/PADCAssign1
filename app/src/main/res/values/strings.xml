@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">POCSimpleHabits</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello Testing....</string>
+    <string name="mediate">Mediate</string>
+    <string name="me">Me</string>
+    <string name="more">More</string>
+    <string name="view_holder_text">Simple Habit Starter</string>
+    <string name="view_holder_button_text">Day 1</string>
+    <string name="start_here">Start Here</string>
+    <string name="morn_mediation">Morning Meditations</string>
+    <string name="worry_free">Worry Free Day</string>
+    <string name="minutes">5 min</string>
+    <string name="all_topics">All Topics</string>
+    <string name="dummy">Learn meditation fundamentals</string>
+</resources>
