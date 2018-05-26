@@ -16,7 +16,7 @@ import myanmar.keyfields.app.pocsimplehabits.adapters.RecyclerAdapter;
  * A simple {@link Fragment} subclass.
  */
 public class SeriesFragment extends Fragment {
-    RecyclerView recyclerView;
+    RecyclerView recyclerView,recyclerViewMain;
     private RecyclerView.Adapter mAdapter;
 
     public SeriesFragment() {
@@ -34,10 +34,17 @@ public class SeriesFragment extends Fragment {
     }
 
     private void onBindUI(View view){
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycleViewScore);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        //recyclerView = (RecyclerView) view.findViewById(R.id.recycleViewScore);
+        recyclerViewMain = (RecyclerView) view.findViewById(R.id.main_recycle_view);
+
+        recyclerViewMain.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         mAdapter = new RecyclerAdapter(R.layout.viewholder_small
                 , getActivity());
-        recyclerView.setAdapter(mAdapter);
+        recyclerViewMain.setAdapter(mAdapter);
+
+/*        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        mAdapter = new RecyclerAdapter(R.layout.viewholder_small
+                , getActivity());
+        recyclerView.setAdapter(mAdapter);*/
     }
 }
