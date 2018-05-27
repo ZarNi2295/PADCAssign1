@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import myanmar.keyfields.app.pocsimplehabits.R;
-import myanmar.keyfields.app.pocsimplehabits.adapters.RecyclerAdapter;
+import myanmar.keyfields.app.pocsimplehabits.adapters.HomeRecyclerAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,12 +38,11 @@ public class SeriesFragment extends Fragment {
         recyclerViewMain = (RecyclerView) view.findViewById(R.id.main_recycle_view);
 
         recyclerViewMain.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        mAdapter = new RecyclerAdapter(R.layout.viewholder_small
-                , getActivity());
+        mAdapter = new HomeRecyclerAdapter(getActivity());
         recyclerViewMain.setAdapter(mAdapter);
 
 /*        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        mAdapter = new RecyclerAdapter(R.layout.viewholder_small
+        mAdapter = new HomeRecyclerAdapter(R.layout.viewholder_small
                 , getActivity());
         recyclerView.setAdapter(mAdapter);*/
     }
