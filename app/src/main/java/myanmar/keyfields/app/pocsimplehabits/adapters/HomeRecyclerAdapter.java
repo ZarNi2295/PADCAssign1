@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import myanmar.keyfields.app.pocsimplehabits.R;
+import myanmar.keyfields.app.pocsimplehabits.data.vo.BaseCompoment;
 import myanmar.keyfields.app.pocsimplehabits.data.vo.HabitStarterVO;
 import myanmar.keyfields.app.pocsimplehabits.viewholders.BaseViewHolder;
 import myanmar.keyfields.app.pocsimplehabits.viewholders.DataViewHolder;
@@ -16,10 +17,10 @@ import myanmar.keyfields.app.pocsimplehabits.viewholders.StartViewHolder;
 /**
  * Created by ZNMSW on 06-Apr-18.
  */
-public class HomeRecyclerAdapter extends BaseRecyclerAdapter<BaseViewHolder,HabitStarterVO> {
+public class HomeRecyclerAdapter extends BaseRecyclerAdapter<BaseViewHolder, BaseCompoment> {
 
     private static final int SERIRES_TOP = 0;
-    private static final int MORING_MEDIATE =1;
+    private static final int MORING_MEDIATE = 1;
     private static final int HEALTHY_RECYCLER = 2;
 
 
@@ -67,7 +68,7 @@ public class HomeRecyclerAdapter extends BaseRecyclerAdapter<BaseViewHolder,Habi
 
     @Override
     public int getItemCount() {
-        return 10;
+        return mData.size();
     }
 
 }

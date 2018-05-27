@@ -55,7 +55,7 @@ public class TopicsDataAgentImpl implements TopicsDataAgent {
                 GetTopicsResponse getNewsResponse = response.body();
                 if (getNewsResponse != null
                         && getNewsResponse.getTopicVOList().size() > 0) {
-                    RestApiEvents.NewsDataLoadedEvent newsDataLoadedEvent = new RestApiEvents.NewsDataLoadedEvent(
+                    RestApiEvents.NewsTopicsLoadedEvent newsDataLoadedEvent = new RestApiEvents.NewsTopicsLoadedEvent(
                             getNewsResponse.getPageNo(), getNewsResponse.getTopicVOList());
                     EventBus.getDefault().post(newsDataLoadedEvent);
                 } else {

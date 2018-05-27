@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import myanmar.keyfields.app.pocsimplehabits.R;
-import myanmar.keyfields.app.pocsimplehabits.adapters.ViewPagerAdapter;
+import myanmar.keyfields.app.pocsimplehabits.adapters.HomeViewPagerAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,7 +44,7 @@ public class MediateFragment extends Fragment {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
+        HomeViewPagerAdapter adapter = new HomeViewPagerAdapter(getChildFragmentManager());
         adapter.addFragment(new OnTheGoFragment(), "On The Go");
         adapter.addFragment(new SeriesFragment(), "Series");
         adapter.addFragment(new TeacherFragment(), "Teachers");

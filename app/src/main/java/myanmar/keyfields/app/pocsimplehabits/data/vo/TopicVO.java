@@ -7,48 +7,55 @@ import java.util.List;
 /**
  * Created by ZNMSW on 26-May-18.
  */
-public class TopicVO {
+public class TopicVO implements BaseCompoment {
     @SerializedName("topic-name")
-    private String newsId;
+    private String topicId;
 
     @SerializedName("topic-desc")
-    private String brief;
+    private String topicDesc;
 
     @SerializedName("icon")
-    private String details;
+    private String icon;
 
     @SerializedName("background")
-    private List<String> images;
+    private String background;
 
-    public String getNewsId() {
-        return newsId;
+    public TopicVO(String topicId, String topicDesc, String icon, String background) {
+        this.topicId = topicId;
+        this.topicDesc = topicDesc;
+        this.icon = icon;
+        this.background = background;
     }
 
-    public void setNewsId(String newsId) {
-        this.newsId = newsId;
+    public String getTopicId() {
+        return topicId;
     }
 
-    public String getBrief() {
-        return brief;
+    public void setTopicId(String topicId) {
+        this.topicId = topicId;
     }
 
-    public void setBrief(String brief) {
-        this.brief = brief;
+    public String getTopicDesc() {
+        return topicDesc;
     }
 
-    public String getDetails() {
-        return details;
+    public void setTopicDesc(String topicDesc) {
+        this.topicDesc = topicDesc;
     }
 
-    public void setDetails(String details) {
-        this.details = details;
+    public String getIcon() {
+        return icon;
     }
 
-    public List<String> getImages() {
-        return images;
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
-    public void setImages(List<String> images) {
-        this.images = images;
+    public String getBackground() {
+        return background;
+    }
+
+    public void setBackground(String background) {
+        this.background = background;
     }
 }

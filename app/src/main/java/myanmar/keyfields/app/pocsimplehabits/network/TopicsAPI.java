@@ -13,7 +13,7 @@ import retrofit2.http.POST;
 public interface TopicsAPI {
 
     @FormUrlEncoded
-    @POST("v1/getMMNews.php")
+    @POST("getTopics.php")
     Call<GetTopicsResponse> loadMMNews(
             @Field("page") int pageIndex,
             @Field("access_token") String accessToken);

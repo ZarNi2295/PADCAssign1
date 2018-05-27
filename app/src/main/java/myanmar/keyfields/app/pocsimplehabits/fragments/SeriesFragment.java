@@ -9,15 +9,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import myanmar.keyfields.app.pocsimplehabits.R;
 import myanmar.keyfields.app.pocsimplehabits.adapters.HomeRecyclerAdapter;
+import myanmar.keyfields.app.pocsimplehabits.data.vo.BaseCompoment;
+import myanmar.keyfields.app.pocsimplehabits.data.vo.HabitStarterVO;
+import myanmar.keyfields.app.pocsimplehabits.data.vo.TopicVO;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class SeriesFragment extends Fragment {
-    RecyclerView recyclerView,recyclerViewMain;
-    private RecyclerView.Adapter mAdapter;
+    RecyclerView recyclerView, recyclerViewMain;
+    private HomeRecyclerAdapter mAdapter;
 
     public SeriesFragment() {
         // Required empty public constructor
@@ -28,12 +34,12 @@ public class SeriesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_series, container, false);
+        View view = inflater.inflate(R.layout.fragment_series, container, false);
         onBindUI(view);
         return view;
     }
 
-    private void onBindUI(View view){
+    private void onBindUI(View view) {
         //recyclerView = (RecyclerView) view.findViewById(R.id.recycleViewScore);
         recyclerViewMain = (RecyclerView) view.findViewById(R.id.main_recycle_view);
 
@@ -41,9 +47,12 @@ public class SeriesFragment extends Fragment {
         mAdapter = new HomeRecyclerAdapter(getActivity());
         recyclerViewMain.setAdapter(mAdapter);
 
-/*        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        mAdapter = new HomeRecyclerAdapter(R.layout.viewholder_small
-                , getActivity());
-        recyclerView.setAdapter(mAdapter);*/
+        List<BaseCompoment> baseCompomentList = new ArrayList<>();
+        baseCompomentList.add(new HabitStarterVO("a", "b"));
+        baseCompomentList.add(new TopicVO("dfa", "der", "er", "reree"));
+
+        mAdapter.appendNewData(baseCompomentList);
+
+
     }
 }

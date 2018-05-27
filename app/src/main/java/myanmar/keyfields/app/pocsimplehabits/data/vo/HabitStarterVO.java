@@ -3,7 +3,7 @@ package myanmar.keyfields.app.pocsimplehabits.data.vo;
 /**
  * Created by ZNMSW on 26-May-18.
  */
-public class HabitStarterVO {
+public class HabitStarterVO implements BaseCompoment {
     String dummyText;
     String dummyText1;
 

@@ -27,11 +27,11 @@ public class RestApiEvents {
         }
     }
 
-    public static class NewsDataLoadedEvent {
+    public static class NewsTopicsLoadedEvent {
         private int loadedPageIndex;
         private List<TopicVO> loadNews;
 
-        public NewsDataLoadedEvent(int loadedPageIndex, List<TopicVO> loadNews) {
+        public NewsTopicsLoadedEvent(int loadedPageIndex, List<TopicVO> loadNews) {
             this.loadedPageIndex = loadedPageIndex;
             this.loadNews = loadNews;
         }
