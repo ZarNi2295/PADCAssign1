@@ -8,12 +8,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import myanmar.keyfields.app.pocsimplehabits.R;
 import myanmar.keyfields.app.pocsimplehabits.adapters.HomeRecyclerAdapter;
+import myanmar.keyfields.app.pocsimplehabits.data.vo.BaseCompoment;
 import myanmar.keyfields.app.pocsimplehabits.data.vo.HabitStarterVO;
+import myanmar.keyfields.app.pocsimplehabits.data.vo.TopicVO;
 
 /**
  * Created by ZNMSW on 26-May-18.
  */
-public class DataViewHolder extends BaseViewHolder<HabitStarterVO> {
+public class DataViewHolder extends BaseViewHolder<BaseCompoment> {
 
 
     public DataViewHolder(View itemView) {
@@ -21,7 +23,7 @@ public class DataViewHolder extends BaseViewHolder<HabitStarterVO> {
     }
 
     @Override
-    public void setData(HabitStarterVO data) {
+    public void setData(BaseCompoment data) {
 
     }
 

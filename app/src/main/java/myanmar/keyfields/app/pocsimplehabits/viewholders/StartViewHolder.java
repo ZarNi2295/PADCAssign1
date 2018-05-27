@@ -7,12 +7,13 @@ import android.view.View;
 import myanmar.keyfields.app.pocsimplehabits.R;
 import myanmar.keyfields.app.pocsimplehabits.adapters.HomeRecyclerAdapter;
 import myanmar.keyfields.app.pocsimplehabits.adapters.SeriesRecyclerAdapter;
+import myanmar.keyfields.app.pocsimplehabits.data.vo.BaseCompoment;
 import myanmar.keyfields.app.pocsimplehabits.data.vo.HabitStarterVO;
 
 /**
  * Created by ZNMSW on 26-May-18.
  */
-public class StartViewHolder extends BaseViewHolder<HabitStarterVO> {
+public class StartViewHolder extends BaseViewHolder<BaseCompoment> {
     private RecyclerView.Adapter mAdapter;
     RecyclerView recyclerView;
 
@@ -25,7 +26,7 @@ public class StartViewHolder extends BaseViewHolder<HabitStarterVO> {
     }
 
     @Override
-    public void setData(HabitStarterVO data) {
+    public void setData(BaseCompoment data) {
 
     }
 

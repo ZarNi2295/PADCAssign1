@@ -7,4 +7,8 @@ package myanmar.keyfields.app.pocsimplehabits.network;
 public interface TopicsDataAgent {
 
     void loadTopics(String accessToken, int pageNo);
+
+    void loadCurrentProgram(String accessToken, int pageNo);
+
+    void loadCategoriesProgram(String accessToken, int pageNo);
 }

@@ -3,6 +3,8 @@ package myanmar.keyfields.app.pocsimplehabits.events;
 
 import java.util.List;
 
+import myanmar.keyfields.app.pocsimplehabits.data.vo.CategoriesProgramDataVO;
+import myanmar.keyfields.app.pocsimplehabits.data.vo.StartItemVO;
 import myanmar.keyfields.app.pocsimplehabits.data.vo.TopicVO;
 
 /**
@@ -29,19 +31,47 @@ public class RestApiEvents {
 
     public static class NewsTopicsLoadedEvent {
         private int loadedPageIndex;
-        private List<TopicVO> loadNews;
+        private List<TopicVO> loadTopics;
 
-        public NewsTopicsLoadedEvent(int loadedPageIndex, List<TopicVO> loadNews) {
+        public NewsTopicsLoadedEvent(int loadedPageIndex, List<TopicVO> loadTopics) {
             this.loadedPageIndex = loadedPageIndex;
-            this.loadNews = loadNews;
+            this.loadTopics = loadTopics;
         }
 
         public int getLoadedPageIndex() {
             return loadedPageIndex;
         }
 
-        public List<TopicVO> getLoadNews() {
-            return loadNews;
+        public List<TopicVO> getLoadTopics() {
+            return loadTopics;
         }
+    }
+
+    public static class CurrentProgramLoadedEvent {
+        private StartItemVO startItemVOS;
+
+        public CurrentProgramLoadedEvent(StartItemVO startItemVOS) {
+            this.startItemVOS = startItemVOS;
+        }
+
+        public StartItemVO getStartItemVOS() {
+            return startItemVOS;
+        }
+    }
+
+    public static class CategoriesProgramLoadedEvent {
+        private List<CategoriesProgramDataVO> categoriesProgramDataVOS;
+
+        public CategoriesProgramLoadedEvent(List<CategoriesProgramDataVO> categoriesProgramDataVOS) {
+            this.categoriesProgramDataVOS = categoriesProgramDataVOS;
+        }
+
+        public List<CategoriesProgramDataVO> getCategoriesProgramDataVOS() {
+            return categoriesProgramDataVOS;
+        }
+    }
+
+    public static class AllDataLoadedEvent {
+
     }
 }

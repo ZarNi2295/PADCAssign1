@@ -7,6 +7,8 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.concurrent.TimeUnit;
 
 import myanmar.keyfields.app.pocsimplehabits.events.RestApiEvents;
+import myanmar.keyfields.app.pocsimplehabits.network.responses.GetCategoriesProgramResponse;
+import myanmar.keyfields.app.pocsimplehabits.network.responses.GetCurrentProgram;
 import myanmar.keyfields.app.pocsimplehabits.network.responses.GetTopicsResponse;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -48,7 +50,7 @@ public class TopicsDataAgentImpl implements TopicsDataAgent {
 
     @Override
     public void loadTopics(String accessToken, int pageNo) {
-        Call<GetTopicsResponse> loadMMNewsCall = theAPI.loadMMNews(pageNo, accessToken);
+        Call<GetTopicsResponse> loadMMNewsCall = theAPI.loadTopics(pageNo, accessToken);
         loadMMNewsCall.enqueue(new Callback<GetTopicsResponse>() {
             @Override
             public void onResponse(Call<GetTopicsResponse> call, Response<GetTopicsResponse> response) {
@@ -67,6 +69,59 @@ public class TopicsDataAgentImpl implements TopicsDataAgent {
 
             @Override
             public void onFailure(Call<GetTopicsResponse> call, Throwable t) {
+                RestApiEvents.ErrorInvokingAPIEvent errorEvent = new RestApiEvents.ErrorInvokingAPIEvent(t.getMessage());
+                EventBus.getDefault().post(errorEvent);
+            }
+        });
+    }
+
+    @Override
+    public void loadCurrentProgram(String accessToken, int pageNo) {
+        Call<GetCurrentProgram> getCurrentProgramCall = theAPI.loadCurrentProgram(pageNo, accessToken);
+        getCurrentProgramCall.enqueue(new Callback<GetCurrentProgram>() {
+            @Override
+            public void onResponse(Call<GetCurrentProgram> call, Response<GetCurrentProgram> response) {
+                GetCurrentProgram getNewsResponse = response.body();
+                if (getNewsResponse != null) {
+                    RestApiEvents.CurrentProgramLoadedEvent newsDataLoadedEvent = new RestApiEvents.CurrentProgramLoadedEvent(
+                           getNewsResponse.getStartItemVOS());
+                    EventBus.getDefault().post(newsDataLoadedEvent);
+                } else {
+                    RestApiEvents.ErrorInvokingAPIEvent errorEvent
+                            = new RestApiEvents.ErrorInvokingAPIEvent("No data could be loaded for now. Pls try again later.");
+                    EventBus.getDefault().post(errorEvent);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetCurrentProgram> call, Throwable t) {
+                RestApiEvents.ErrorInvokingAPIEvent errorEvent = new RestApiEvents.ErrorInvokingAPIEvent(t.getMessage());
+                EventBus.getDefault().post(errorEvent);
+            }
+        });
+    }
+
+    @Override
+    public void loadCategoriesProgram(String accessToken, int pageNo) {
+        Call<GetCategoriesProgramResponse> getCurrentProgramCall = theAPI.loadCategoriesProgram(pageNo, accessToken);
+        getCurrentProgramCall.enqueue(new Callback<GetCategoriesProgramResponse>() {
+            @Override
+            public void onResponse(Call<GetCategoriesProgramResponse> call, Response<GetCategoriesProgramResponse> response) {
+                GetCategoriesProgramResponse getNewsResponse = response.body();
+                if (getNewsResponse != null
+                        && getNewsResponse.getCategoriesProgramDataVOS().size() > 0) {
+                    RestApiEvents.CategoriesProgramLoadedEvent newsDataLoadedEvent = new RestApiEvents.CategoriesProgramLoadedEvent(
+                            getNewsResponse.getCategoriesProgramDataVOS());
+                    EventBus.getDefault().post(newsDataLoadedEvent);
+                } else {
+                    RestApiEvents.ErrorInvokingAPIEvent errorEvent
+                            = new RestApiEvents.ErrorInvokingAPIEvent("No data could be loaded for now. Pls try again later.");
+                    EventBus.getDefault().post(errorEvent);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetCategoriesProgramResponse> call, Throwable t) {
                 RestApiEvents.ErrorInvokingAPIEvent errorEvent = new RestApiEvents.ErrorInvokingAPIEvent(t.getMessage());
                 EventBus.getDefault().post(errorEvent);
             }

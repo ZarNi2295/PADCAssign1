@@ -9,7 +9,10 @@ import android.view.ViewGroup;
 
 import myanmar.keyfields.app.pocsimplehabits.R;
 import myanmar.keyfields.app.pocsimplehabits.data.vo.BaseCompoment;
+import myanmar.keyfields.app.pocsimplehabits.data.vo.CategoriesProgramDataVO;
 import myanmar.keyfields.app.pocsimplehabits.data.vo.HabitStarterVO;
+import myanmar.keyfields.app.pocsimplehabits.data.vo.StartItemVO;
+import myanmar.keyfields.app.pocsimplehabits.data.vo.TopicVO;
 import myanmar.keyfields.app.pocsimplehabits.viewholders.BaseViewHolder;
 import myanmar.keyfields.app.pocsimplehabits.viewholders.DataViewHolder;
 import myanmar.keyfields.app.pocsimplehabits.viewholders.StartViewHolder;
@@ -36,7 +39,7 @@ public class HomeRecyclerAdapter extends BaseRecyclerAdapter<BaseViewHolder, Bas
             return new DataViewHolder(itemView);
         } else if (viewType == MORING_MEDIATE) {
             View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_medium, parent, false);
-            return new DataViewHolder(itemView);
+            return new StartViewHolder(itemView);
         } else if (viewType == HEALTHY_RECYCLER) {
             View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder, parent, false);
             return new StartViewHolder(itemView);
@@ -49,13 +52,14 @@ public class HomeRecyclerAdapter extends BaseRecyclerAdapter<BaseViewHolder, Bas
 
     @Override
     public void onBindViewHolder(BaseViewHolder holder, int position) {
-        // holder.bind(mData.get(position));
+        holder.setData(mData.get(position));
 
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (position == 0) {
+
+          /*   if (position == 0) {
             return SERIRES_TOP;
         } else if (position == 1) {
             return MORING_MEDIATE;
@@ -63,7 +67,18 @@ public class HomeRecyclerAdapter extends BaseRecyclerAdapter<BaseViewHolder, Bas
             return HEALTHY_RECYCLER;
         } else {
             return position;
+        }*/
+
+
+        if (mData.get(position) instanceof StartItemVO) {
+            return SERIRES_TOP;
+        } else if (mData.get(position) instanceof CategoriesProgramDataVO) {
+            return MORING_MEDIATE;
+        }else if(mData.get(position) instanceof TopicVO){
+            return HEALTHY_RECYCLER;
         }
+        return SERIRES_TOP;
+
     }
 
     @Override
